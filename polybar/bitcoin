@@ -1,0 +1,8 @@
+#! /usr/bin/env python3
+import requests
+
+#returns current price of Bitcoin
+r = requests.get('https://api.kraken.com/0/public/Ticker?pair=XBTUSD')
+ticker = r.json()
+print('BTC: $%.2f  ' % float(ticker['result']['XXBTZUSD']['c'][0]))
+
