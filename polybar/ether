@@ -1,0 +1,8 @@
+#! /usr/bin/env python3
+import requests
+
+#Returns current price of Ethereum
+r = requests.get('https://api.kraken.com/0/public/Ticker?pair=ETHUSD')
+ticker = r.json()
+print('ETH: $%.2f  ' % float(ticker['result']['XETHZUSD']['c'][0]))
+
