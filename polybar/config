@@ -83,6 +83,7 @@ format = <label>
 tail = true
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/redditdisplay
+click-left = python ~/.config/polybar/openredditlink.py
 [module/ether]
 type = custom/script
 interval = 10
