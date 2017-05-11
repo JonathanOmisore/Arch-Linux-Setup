@@ -3,17 +3,19 @@ import random
 import praw
 import time
 import os
+file = open("link","w")
 def start():
-
-    r = praw.Reddit(client_id=clientid, client_secret = clientsecret, user_agent="007")
-
-    subreddits = ["worldnews","hacking","netsec","howtohack","android", "startups","news","politics","space"]
+    r = praw.Reddit(client_id=clientid,client_secret = clientsecret, user_agent="007")
+   
+    subreddits = ["worldnews","hacking","netsec","howtohack","bitcoin", "ethereum", "startups","news","politics","space"]
     todisplay = []
-    #Retuns random hot submission from subreddit
     for x in subreddits:
     
         for submission in r.subreddit(x).hot(limit=6):
-            todisplay.append("/r/" + x + ": " + submission.title[:70])
-    return random.choice(todisplay)
-        
-    
+            todisplay.append(submission)
+    randsubmission = random.choice(todisplay)
+    write(randsubmission.shortlink)
+    return "/r/" + str(randsubmission.subreddit) + ": " + randsubmission.title[:70]
+def write(link):
+    file.write(link)
+    file.close()
